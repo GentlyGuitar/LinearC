@@ -1,0 +1,6 @@
+
+int gv1;
+int gv2 = 3;
+
+;; declare int printf (char* format, ... );
+
