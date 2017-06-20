@@ -5,7 +5,7 @@ LinearC is an intermediate language between LLVM IR and C. It has features from 
 
 It's more more readable than LLVM IR because it still uses most of C's operators.
 
-It's very easy to parse because it is three address code based and has a very modified C grammar. 
+It's very easy to parse because it is three address code based and has a modified C grammar. 
 The grammar is modified so that it is closer to LL(1), though it is still LL(2), if not considering 
 the "typedef-name: identifier" problem. 
 
@@ -44,7 +44,7 @@ This grammar is written with a combination of BNF and regular expression, but it
 primitive : "int"
           | "float"
 
-type : (storage)? primitive (\*)*  # more
+type : (storage)? primitive (\*)*  
 
 storage : "static"
         | "extern"  
