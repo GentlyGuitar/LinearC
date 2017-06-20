@@ -3,6 +3,7 @@
 //
 
 #include <utilities/flags.h>
+#include <utilities/strings.h>
 #include "fileParser.h"
 
 
@@ -53,28 +54,28 @@ std::ifstream& FileParser::getline_or_eof() {
     return _ifs;
 }
 
-std::ifstream& FileParser::getline_nocomment(char comment_letter) {
+std::ifstream& FileParser::getline_nocomment(const char* head) {
     getline_or_eof();
 
     if (_eof) {
         return _ifs;
     }
 
-    while (!_eof && _text[0] == comment_letter) {
+    while (!_eof && Strings::startswith(_text, head)) {
         getline_or_eof();
     }
 
     return _ifs;
 }
 
-std::ifstream& FileParser::get_real_line(char comment_letter) {
+std::ifstream& FileParser::get_real_line(const char* head) {
     getline_or_eof();
 
     if (_eof) {
         return _ifs;
     }
 
-    while (!_eof && (_text[0] == comment_letter || _text.empty())) {
+    while (!_eof && (_text.empty() || Strings::startswith(_text, head))) {
         getline_or_eof();
     }
 
@@ -95,7 +96,7 @@ std::ifstream& FileParser::getline_nonempty() {
     return _ifs;
 }
 
-void FileParser::remove_tail_comments(char delim) {
+void FileParser::remove_tail(const char* delim) {
     int pos = _text.find(delim);
     set_text(_text.substr(0, pos));
 }

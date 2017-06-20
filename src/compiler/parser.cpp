@@ -59,11 +59,11 @@ void CParser::parse() {
 void CParser::do_globals() {
     while (!_eof) {
         zpl("eof: %d", _eof);
-        get_real_line();
+        get_real_line("//");
         if (_eof) {
             break;
         }
-        remove_tail_comments();
+        remove_tail(";");
         get_token();
         if (_token.category == "primitive type") {
             do_global_variables();

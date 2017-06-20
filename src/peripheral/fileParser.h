@@ -25,10 +25,10 @@ public:
     void set_line(string text);
 
     std::ifstream& getline_or_eof();
-    std::ifstream& getline_nocomment(char comment=';');
-    std::ifstream& get_real_line(char comment=';');
+    std::ifstream& getline_nocomment(const char* head=";");
+    std::ifstream& get_real_line(const char* head=";");
     std::ifstream& getline_nonempty();
-    void remove_tail_comments(char comment=';');
+    void remove_tail(const char* comment=";");
 };
 
 #endif //LINEARC_FILEPARSER_H
