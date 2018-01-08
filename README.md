@@ -1,7 +1,7 @@
 
 ## LinearC
 
-LinearC is an intermediate language between LLVM IR and C. It has features from both languages. 
+LinearC is an intermediate language between LLVM IR and C. It has features from both languages. This my attempt to make some frontend parsing tutorials. 
 
 It's more more readable than LLVM IR because it still uses most of C's operators.
 
